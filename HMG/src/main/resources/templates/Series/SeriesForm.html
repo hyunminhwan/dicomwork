@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<table>
+		<tr>
+			<td>스터디번호</td>
+			<td>시리즈번호</td>
+			<th>장비</th>
+			<th>날짜</th>
+			<th>시간</th>
+			<th>부위</th>
+			<th>이미지건수</th>
+		</tr>
+		<tr th:each="series:${series}">
+			<td>
+				<a th:href="@{/ImageTabList(studyKey=${series.id.studyKey}, seriesKey=${series.id.seriesKey})}"
+				   th:text="${series.id.studyKey}"></a>
+			</td>
+			<td th:text="${series.id.seriesKey}"></td>
+			<td th:text="${series.modality}"></td>
+			<td th:text="${series.seriesDate}"></td>
+			<td th:text="${series.seriesTime}"></td>
+			<td th:text="${series.bodyPart}"></td>
+			<td th:text="${series.imageCnt}"></td>
+		</tr>
+	</table>
+</body>
+
+</html>
