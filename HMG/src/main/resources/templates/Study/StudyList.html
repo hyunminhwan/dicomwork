@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<link href="css/index.css" rel="stylesheet"/>
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
@@ -15,7 +15,7 @@
 		}
 	</style>
 </head>
-
+<div th:replace="~{/fragments/header.html :: fragment-menu}"></div>
 <body>
 	<table>
 		<tr>
@@ -28,8 +28,9 @@
 			<th>시리즈건수</th>
 			<th>이미지건수</th>
 		</tr>
-		<tr th:each="study : ${study}">
-			<td><a th:href="@{/seriesForm(studyKey=${study.studyKey})}" th:text="${study.studyDesc}"></a></td>
+		<!--for 문-->
+		<tr th:each="study : ${study}" >
+			<td><a th:href="@{/seriesForm(studyKey=${study.studyKey})}" th:text="${study.studyDesc}!= null ? ${study.studyDesc}: '이름없음'"></a></td>
 			<td th:text="${study.pid}"></td>
 			<td th:text="${study.modality}"></td>
 			<td th:text="${study.pname}"></td>

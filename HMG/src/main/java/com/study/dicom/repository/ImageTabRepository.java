@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ImageTabRepository extends JpaRepository<ImageTab,Long> {
 
-	
-	List<ImageTab> findByStudyKeyAndSeriesKey(Long studyKey, Long seriesKey);
+
+	List<ImageTab> findByStudyKeyAndSeriesKeyOrderByImageKey(Long studyKey, Long seriesKey);
  
 }

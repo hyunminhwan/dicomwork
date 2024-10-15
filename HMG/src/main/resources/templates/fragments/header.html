@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>검색 폼</title>
+
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #1f1f1f;
+			color: #fff;
+			margin: 0;
+			padding: 20px;
+		}
+
+		.container {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		.search-bar {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+
+		.search-bar input[type="text"],
+		.search-bar select {
+			background-color: #2e2e2e;
+			color: #fff;
+			border: 1px solid #880000;
+			padding: 8px 12px;
+			border-radius: 8px;
+			margin-right: 10px;
+		}
+
+		.search-bar select {
+			padding-right: 20px;
+		}
+
+		.search-bar button {
+			background-color: #880000;
+			color: #fff;
+			border: none;
+			padding: 8px 16px;
+			border-radius: 8px;
+			cursor: pointer;
+		}
+
+		.date-filters {
+			display: flex;
+			gap: 10px;
+		}
+
+		.date-filters button {
+			background-color: #3e3e3e;
+			color: #fff;
+			border: none;
+			padding: 8px 16px;
+			border-radius: 50%;
+			cursor: pointer;
+		}
+
+		.date-filters button.active,
+		.search-bar button:hover {
+			background-color: #880000;
+		}
+	</style>
+</head>
+
+<div th:fragment="fragment-menu">
+	<body>
+		<div onclick="location.href='StudyTabList'">전체조회</div>
+		<form action="">
+			<div class="container">
+				<div class="search-bar">
+					<input type="text" placeholder="환자 아이디" name="pid">
+					<input type="text" placeholder="환자 이름" name="pName">
+					<select name="">
+						<option value="0">판독 상태</option>
+						<option value="1">판독</option>
+						<option value="2">예비 판독</option>
+					</select>
+					<button type="submit">검색</button>
+				</div>
+
+				<div class="date-filters">
+					<button class="active">전체</button>
+					<button>1일</button>
+					<button>3일</button>
+					<button>1주일</button>
+					<button>제설정</button>
+				</div>
+		</form>
+</div>
+
+
+</body>
+</div>
+
+</html>

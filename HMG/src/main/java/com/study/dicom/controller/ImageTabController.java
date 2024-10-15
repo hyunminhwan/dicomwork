@@ -21,14 +21,17 @@ public class ImageTabController {
 	public String list(@RequestParam("studyKey") Long studyKey,@RequestParam("seriesKey") Long seriesKey, 
             Model model) {
 		
-		List<ImageTab> image = imageTabService.list(studyKey,seriesKey);
-		for(int i=0; i<image.size();i++) {
-			ImageTab imgTab = image.get(i);
+		List<ImageTab> images = imageTabService.list(studyKey,seriesKey);
+		for(int i=0; i<images.size();i++) {
+			ImageTab imgTab = images.get(i);
 			imgTab.setPath(imgTab.getPath().replace("\\","/"));
-			image.set(i,imgTab);
+			images.set(i,imgTab);
 		}
-		model.addAttribute("image",image);
+		
+		System.out.println("image"+images);
+		model.addAttribute("image",images);
 		return "Image/ImageList";
+		
 	}
 	
 }

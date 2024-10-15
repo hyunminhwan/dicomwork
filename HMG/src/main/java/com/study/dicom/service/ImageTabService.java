@@ -15,7 +15,7 @@ public class ImageTabService {
 	ImageTabRepository imageTabRepository;
 	
 	public List<ImageTab> list(Long studyKey,Long seriesKey) {
-		return imageTabRepository.findByStudyKeyAndSeriesKey(studyKey,seriesKey);
+		return imageTabRepository.findByStudyKeyAndSeriesKeyOrderByImageKey(studyKey,seriesKey);
 	}
 
 }

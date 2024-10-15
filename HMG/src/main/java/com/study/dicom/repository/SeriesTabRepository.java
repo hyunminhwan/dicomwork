@@ -11,8 +11,7 @@ import com.study.dicom.domain.SeriesTabId;
 
 @Repository
 public interface SeriesTabRepository  extends JpaRepository<SeriesTab, SeriesTabId>{
-	
-	
-	List<SeriesTab> findAllByIdStudyKey( Long studyKey);
+
+	List<SeriesTab> findAllByIdStudyKey(Long studyKey);
 
 }

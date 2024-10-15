@@ -20,8 +20,7 @@ public class SeriesTabController {
 	@GetMapping("/seriesForm")
 	public String seriesForm(@RequestParam(value="studyKey") Long studyKey , Model model) {
 		List<SeriesTab> series = seriesTabService.seriesList(studyKey);
-		System.out.println("시리즈 내용"+series);
 		model.addAttribute("series",series);
-		return "seriesss/SeriesForm";
+		return "Series/SeriesForm";
 	}
 }

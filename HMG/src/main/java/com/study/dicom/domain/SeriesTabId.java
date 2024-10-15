@@ -21,4 +21,5 @@ public class SeriesTabId implements Serializable {
 
     @Column(name = "STUDYKEY")
     private Long studyKey;
+    
 }

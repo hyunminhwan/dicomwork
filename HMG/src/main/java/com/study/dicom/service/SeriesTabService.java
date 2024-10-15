@@ -16,7 +16,6 @@ public class SeriesTabService {
 	SeriesTabRepository seriesTabRepository;
 	
 	public List<SeriesTab> seriesList( Long studyKey) {
-		
 		return seriesTabRepository.findAllByIdStudyKey(studyKey);
 	}
 }
