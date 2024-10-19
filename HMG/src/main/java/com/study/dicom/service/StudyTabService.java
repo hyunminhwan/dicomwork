@@ -19,4 +19,10 @@ public class StudyTabService {
 	public List<StudyTab> list() {
 		return studyTabRepository.findAllByOrderByStudyKeyDesc();
 	}	
+	
+	public List<StudyTab> searchStudyTab(String pid, String pname, Long reportStatus, String modality) {
+        return studyTabRepository.findStudyTabsByCriteria(pid, pname, reportStatus, modality);
+    }
+
+	
 }

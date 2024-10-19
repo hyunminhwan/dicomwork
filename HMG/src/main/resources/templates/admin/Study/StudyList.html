@@ -5,13 +5,15 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style>
-		/* a 태그를 테이블 셀 전체에 걸리도록 설정 */
-		td a {
-			display: block;
-			width: 100%;
-			height: 100%;
-			text-decoration: none; /* 밑줄 없애기 */
-			color: inherit; /* 글자 색상 상속 */
+		td,th{
+			border: 1px solid;
+			text-align: center;
+		}
+		tr{
+			cursor: pointer;
+		}
+		tr:hover {
+			background-color: #f0f0f0; /* 원하는 색상으로 변경 */
 		}
 	</style>
 </head>
@@ -27,10 +29,11 @@
 			<th>환자생일</th>
 			<th>시리즈건수</th>
 			<th>이미지건수</th>
+			<th>판독결과</th>
 		</tr>
 		<!--for 문-->
-		<tr th:each="study : ${study}" >
-			<td><a th:href="@{/seriesForm(studyKey=${study.studyKey})}" th:text="${study.studyDesc}!= null ? ${study.studyDesc}: '이름없음'"></a></td>
+		<tr th:each="study : ${study}" th:onclick="|location.href='@{/ImageTabList(studyKey=${study.studyKey})}'|">
+			<td th:text="${study.studyDesc}!= null ? ${study.studyDesc}: '이름없음'"></td>
 			<td th:text="${study.pid}"></td>
 			<td th:text="${study.modality}"></td>
 			<td th:text="${study.pname}"></td>
@@ -38,6 +41,9 @@
 			<td th:text="${study.pBirthDateTime}"></td>
 			<td th:text="${study.seriesCnt}"></td>
 			<td th:text="${study.imageCnt}"></td>
+			<td th:text="${study.reportStatus}==3 ? 
+						'읽지않음':(${study.reportStatus}==5 ?
+						'예비판독':'판독')"></td>
 		</tr>
 	</table>
 </body>

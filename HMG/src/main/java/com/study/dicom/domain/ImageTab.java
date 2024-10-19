@@ -2,6 +2,7 @@ package com.study.dicom.domain;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -11,20 +12,10 @@ import lombok.Setter;
 
 @Data
 @Entity(name = "IMAGETAB")
-@IdClass(ImageTabId.class)
 public class ImageTab {
 
-    @Id
-    @Column(name = "STUDYKEY", nullable = false)
-    private Long studyKey;
-
-    @Id
-    @Column(name = "SERIESKEY", nullable = false)
-    private Long seriesKey;
-
-    @Id
-    @Column(name = "IMAGEKEY", nullable = false)
-    private Long imageKey;
+	@EmbeddedId
+    private ImageTabId id; //복합키 클래스 
 
     @Column(name = "STUDYINSUID", nullable = false, length = 64)
     private String studyInsUid;

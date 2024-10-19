@@ -1,6 +1,6 @@
 package com.study.dicom.service;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +14,12 @@ public class ImageTabService {
 	@Autowired
 	ImageTabRepository imageTabRepository;
 	
-	public List<ImageTab> list(Long studyKey,Long seriesKey) {
-		return imageTabRepository.findByStudyKeyAndSeriesKeyOrderByImageKey(studyKey,seriesKey);
+	public ArrayList<ImageTab> list(Long studyKey,Long seriesKey) {
+		return imageTabRepository.findByIdStudyKeyAndIdSeriesKeyOrderByIdImageKey(studyKey,seriesKey);
 	}
+
+//	public ArrayList<ImageTab> imgList(Long studyKey) {
+//		return imageTabRepository.findByIdStudyKeyOrderByIdSeriesKeyAscIdImageKeyAsc(studyKey);
+//	}
 
 }

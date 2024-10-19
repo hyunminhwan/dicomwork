@@ -75,27 +75,67 @@
 </head>
 
 <div th:fragment="fragment-menu">
+
 	<body>
-		<div onclick="location.href='StudyTabList'">전체조회</div>
-		<form action="">
+		<form action="/search" method="get">
 			<div class="container">
 				<div class="search-bar">
 					<input type="text" placeholder="환자 아이디" name="pid">
-					<input type="text" placeholder="환자 이름" name="pName">
-					<select name="">
-						<option value="0">판독 상태</option>
-						<option value="1">판독</option>
-						<option value="2">예비 판독</option>
+					<input type="text" placeholder="환자 이름" name="pname">
+					<select name="reportStatus">
+						<option value=0>판독 상태</option>
+						<option value=3>읽지 않음</option>
+						<option value=5>예비 판독</option>
+						<option value=6>판독</option>
+					</select>
+					<select name="modality">
+						<option value="">검사장비</option>
+						<option value="AS">AS</option>
+						<option value="AU">AU</option>
+						<option value="BI">BI</option>
+						<option value="CD">CD</option>
+						<option value="CF">CF</option>
+						<option value="CP">CP</option>
+						<option value="CR">CR</option>
+						<option value="CS">CS</option>
+						<option value="CT">CT</option>
+						<option value="DD">DD</option>
+						<option value="DF">DF</option>
+						<option value="DG">DG</option>
+						<option value="DM">DM</option>
+						<option value="DR">DR</option>
+						<option value="DS">DS</option>
+						<option value="DX">DX</option>
+						<option value="EC">EC</option>
+						<option value="ES">ES</option>
+						<option value="FA">FA</option>
+						<option value="FS">FS</option>
+						<option value="LS">LS</option>
+						<option value="LP">LP</option>
+						<option value="MA">MA</option>
+						<option value="MR">MR</option>
+						<option value="MS">MS</option>
+						<option value="NM">NM</option>
+						<option value="OT">OT</option>
+						<option value="PT">PT</option>
+						<option value="RF">RF</option>
+						<option value="RG">RG</option>
+						<option value="ST">ST</option>
+						<option value="TG">TG</option>
+						<option value="US">US</option>
+						<option value="VF">VF</option>
+						<option value="XA">XA</option>
 					</select>
 					<button type="submit">검색</button>
 				</div>
 
 				<div class="date-filters">
-					<button class="active">전체</button>
+					<button type="button" class="active" onclick="location.href='StudyTabList'">전체조회</button>
 					<button>1일</button>
 					<button>3일</button>
 					<button>1주일</button>
 					<button>제설정</button>
+					
 				</div>
 		</form>
 </div>
