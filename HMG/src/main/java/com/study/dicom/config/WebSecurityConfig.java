@@ -63,6 +63,7 @@ public class WebSecurityConfig {
 				.password(passwordEncoder().encode("1234"))
 				.roles("ADMIN")
 				.build();
+		
 		return new InMemoryUserDetailsManager(admin);
 	}
 	

@@ -18,6 +18,10 @@ public class ImageTabService {
 		return imageTabRepository.findByIdStudyKeyAndIdSeriesKeyOrderByIdImageKey(studyKey,seriesKey);
 	}
 
+	public ArrayList<ImageTab> imageDetail(Long studyKey, Long seriesKey) {
+		return imageTabRepository.findByIdStudyKeyAndIdSeriesKey(studyKey,seriesKey);
+	}
+
 //	public ArrayList<ImageTab> imgList(Long studyKey) {
 //		return imageTabRepository.findByIdStudyKeyOrderByIdSeriesKeyAscIdImageKeyAsc(studyKey);
 //	}

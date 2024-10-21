@@ -53,24 +53,7 @@
 			cursor: pointer;
 		}
 
-		.date-filters {
-			display: flex;
-			gap: 10px;
-		}
 
-		.date-filters button {
-			background-color: #3e3e3e;
-			color: #fff;
-			border: none;
-			padding: 8px 16px;
-			border-radius: 50%;
-			cursor: pointer;
-		}
-
-		.date-filters button.active,
-		.search-bar button:hover {
-			background-color: #880000;
-		}
 	</style>
 </head>
 
@@ -127,16 +110,9 @@
 						<option value="XA">XA</option>
 					</select>
 					<button type="submit">검색</button>
-				</div>
-
-				<div class="date-filters">
-					<button type="button" class="active" onclick="location.href='StudyTabList'">전체조회</button>
-					<button>1일</button>
-					<button>3일</button>
-					<button>1주일</button>
-					<button>제설정</button>
 					
-				</div>
+					<button type="button" class="active" onclick="location.href='StudyTabList'">전체조회</button>
+
 		</form>
 </div>
 

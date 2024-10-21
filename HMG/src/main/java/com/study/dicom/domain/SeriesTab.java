@@ -10,7 +10,7 @@ import lombok.Data;
 public class SeriesTab {
 
 	@EmbeddedId
-    private SeriesTabId id;  // 복합 키 클래스 사용
+    private SeriesTabId id;  // 복합 키 클래스 사용 (id가 여러개)/포랜키(어려움)
 
     @Column(name = "STUDYINSUID", nullable = false, length = 64)
     private String studyInsUid;

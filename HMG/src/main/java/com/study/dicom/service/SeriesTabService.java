@@ -1,8 +1,8 @@
 package com.study.dicom.service;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.study.dicom.domain.SeriesTab;
@@ -14,7 +14,7 @@ public class SeriesTabService {
 	@Autowired
 	SeriesTabRepository seriesTabRepository;
 	
-	public ArrayList<SeriesTab> seriesList( Long studyKey) {
-		return seriesTabRepository.findAllByIdStudyKey(studyKey);
+	public Page<SeriesTab> seriesList(PageRequest of ,Long studyKey) {
+		return seriesTabRepository.findByIdStudyKeyOrderByIdSeriesKeyAsc(of,studyKey);
 	}
 }
