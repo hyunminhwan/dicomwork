@@ -9,14 +9,13 @@ public class LoginController {
 
 
     // 로그인 페이지 표시
-	
 	  @GetMapping("/")
 	  public String loginForm() {
 		  
 		  return "login/login";
 		  
 	  }
-	 
+	
 	  @GetMapping("/index")
 	  public String index() {
 		  

@@ -19,7 +19,7 @@
 			/* 2행 그리드 */
 			gap: 10px;
 			/* 그리드 요소 사이의 간격 */
-			
+
 		}
 
 		.viewer-container {
@@ -46,17 +46,18 @@
 <body>
 
 	<div class="viewer-grid">
-		<!-- Thymeleaf 반복문으로 DICOM 뷰어 생성 -->
-		<div th:each="imageList, index : ${images}" class="viewer-container" th:id="'dicomViewer' + ${index}"
-			th:data-studyKey="${#lists.isEmpty(imageList) ? 'N/A' : imageList[0].id.studyKey}"
-			th:data-seriesKey="${#lists.isEmpty(imageList) ? 'N/A' : imageList[0].id.seriesKey}"
+		<!-- Thymeleaf 반복문으로 DICOM 뷰어 생성  ArrayList<ArrayList<String>>-->
+		<div th:each="series, indexStat : ${seriesList}" class="viewer-container"
+			th:id="'dicomViewer' + ${indexStat.index}" 
+			th:data-studyKey="${studyKey}"
+			th:data-seriesKey="${series}"
 			ondblclick="imageDetail(this)">
-			<!-- 각 imageList에서 개별 image를 처리 -->
-			<span th:each="image : ${imageList}" th:data-path="@{'/mhg/' + ${image.path} + ${image.fName}}"></span>
+			<!-- 각 series 내의 imageList 처리 -->
+			<span th:each="image : ${imageList.get(indexStat.index)}" th:data-path="@{'/mhg/' + ${image}}"></span>
 		</div>
 	</div>
 	<a th:if="${nowPage > 0}" th:href="@{ImageTabList(nowPage=${nowPage-1},,studyKey=${studyKey})}">이전</a>
-	<div th:text="${nowPage+1}"></div>
+	<span th:text="${nowPage+1}"></span>
 	<a th:if="${nowPage < totalPages}" th:href="@{ImageTabList(nowPage=${nowPage+1},studyKey=${studyKey})}">다음</a>
 
 	<script>

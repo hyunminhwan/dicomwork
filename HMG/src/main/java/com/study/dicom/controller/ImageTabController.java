@@ -9,9 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.study.dicom.domain.ImageTab;
-import com.study.dicom.domain.SeriesTab;
 import com.study.dicom.service.ImageTabService;
 import com.study.dicom.service.SeriesTabService;
 
@@ -66,34 +65,39 @@ public class ImageTabController {
 //		System.out.println("images"+seriesImageMap);
 //		model.addAttribute("images",seriesImageMap);
 		
-		ArrayList<ArrayList<ImageTab>> imagesList = new ArrayList<ArrayList<ImageTab>>();
-		Page<SeriesTab> seriesPage = seriesTabService.seriesList(PageRequest.of(nowPage, 4),studyKey);
-		for(SeriesTab s : seriesPage) {
-			ArrayList<ImageTab> images = imageTabService.list(s.getId().getStudyKey(),s.getId().getSeriesKey());
-			for(int i=0;i<images.size();i++) {
-				ImageTab imgTab =images.get(i);
-				imgTab.setPath(imgTab.getPath().replace("\\","/"));
-				images.set(i,imgTab);
-				
-			}
-			
+		ArrayList<ArrayList<String>> imagesList = new ArrayList<ArrayList<String>>();
+		Page<Long> seriesList = imageTabService.seriesList(PageRequest.of(nowPage, 4),studyKey);
+		for(Long s : seriesList) {
+			System.out.println("seriesList : "+s);
+			ArrayList<String> images = imageTabService.list(studyKey,s);
 			imagesList.add(images);
 			
 		}
-		int totalPages =seriesPage.getTotalPages();
-		model.addAttribute("images",imagesList);
+		
+		int totalPages =seriesList.getTotalPages()-1;
+		model.addAttribute("imageList",imagesList);
 		model.addAttribute("nowPage",nowPage);
 		model.addAttribute("totalPages",totalPages);
 		model.addAttribute("studyKey",studyKey);
+		model.addAttribute("seriesList", seriesList); 
 		return "/admin/Image/ImageList";
 		
 	}
 	
 	@GetMapping("/ImageDetail")
 	public String detail(@RequestParam(value = "studyKey") Long studyKey,@RequestParam(value = "seriesKey") Long seriesKey,Model model) {
-		ArrayList<ImageTab> image = imageTabService.imageDetail(studyKey,seriesKey);
+		ArrayList<String> image = imageTabService.imageDetail(studyKey,seriesKey);
 		model.addAttribute("images",image);
+		model.addAttribute("studyKey",studyKey);
 		return "/admin/Image/ImageDetail";
+	}
+	
+	@GetMapping("/studyImages")
+	@ResponseBody
+	public ArrayList<String> studyImages(@RequestParam(value="studyKey") Long studyKey) {
+		ArrayList<String> imageList =imageTabService.studyImages(studyKey);
+		
+		return imageList;
 	}
 	
 }

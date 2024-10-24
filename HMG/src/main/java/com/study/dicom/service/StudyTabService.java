@@ -1,9 +1,9 @@
 package com.study.dicom.service;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.study.dicom.domain.StudyTab;
@@ -16,13 +16,17 @@ public class StudyTabService {
 	@Autowired
 	StudyTabRepository studyTabRepository;
 
-	public List<StudyTab> list() {
-		return studyTabRepository.findAllByOrderByStudyKeyDesc();
+	public Page<StudyTab> list(PageRequest of) {
+		return studyTabRepository.findAllByOrderByStudyKeyDesc(of);
 	}	
 	
-	public List<StudyTab> searchStudyTab(String pid, String pname, Long reportStatus, String modality) {
-        return studyTabRepository.findStudyTabsByCriteria(pid, pname, reportStatus, modality);
+	public Page<StudyTab> searchStudyTab(PageRequest of,String pid, String pname, Long reportStatus, String modality) {
+        return studyTabRepository.findStudyTabsByCriteria(of,pid, pname, reportStatus, modality);
     }
+
+	public Page<StudyTab> pastList(PageRequest of, String pid, String pname) {
+		return studyTabRepository.findAllByPidAndPname(of,pid,pname);
+	}
 
 	
 }
