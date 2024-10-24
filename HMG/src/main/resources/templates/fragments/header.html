@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>검색 폼</title>
 
 	<style>
@@ -52,11 +53,13 @@
 			border-radius: 8px;
 			cursor: pointer;
 		}
+
+
 	</style>
 </head>
 
 <div th:fragment="fragment-menu">
-
+	<div th:replace="~{/fragments/calendar.html :: fragment-calendar}"></div>
 	<body>
 		<form action="/search" method="get">
 			<div class="container">
@@ -108,32 +111,32 @@
 						<option value="XA">XA</option>
 					</select>
 					<button type="submit">검색</button>
-
+					
 					<button type="button" class="active" onclick="location.href='StudyTabList'">전체조회</button>
 
 		</form>
-
-
+		<form action="/searchByDate">		
+				<button type="button" class="active" onclick="location.href='/calendar'">달력</button>
+					<script>
+					    // 달력 표시/숨기기 함수
+					    function toggleCalendar() {
+					        const calendarContainer = document.getElementById('calendar-container');
+					        if (calendarContainer.style.display === 'none') {
+					            calendarContainer.style.display = 'block'; // 달력 표시
+					            renderCalendar(currentMonth, currentYear);  // 달력 렌더링
+					        } else {
+					            calendarContainer.style.display = 'none';  // 달력 숨기기
+					        }
+					    }
+					</script>
+					
+					<input type="date" name="startDate" placeholder="시작 날짜">
+            	    <input type="date" name="endDate" placeholder="종료 날짜">
+        	        <button type="submit">검색</button>>
+			</form>
+		
 </div>
-<form action="/searchByDate">
-	<button type="button" class="active" onclick="location.href='/calendar'">달력</button>
-	<script>
-		// 달력 표시/숨기기 함수
-		function toggleCalendar() {
-			const calendarContainer = document.getElementById('calendar-container');
-			if (calendarContainer.style.display === 'none') {
-				calendarContainer.style.display = 'block'; // 달력 표시
-				renderCalendar(currentMonth, currentYear);  // 달력 렌더링
-			} else {
-				calendarContainer.style.display = 'none';  // 달력 숨기기
-			}
-		}
-	</script>
-
-	<input type="date" name="startDate" placeholder="시작 날짜">
-	<input type="date" name="endDate" placeholder="종료 날짜">
-	<button type="submit">검색</button>>
-</form>
+		
 
 </body>
 </div>

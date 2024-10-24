@@ -41,7 +41,10 @@ public class StudyTabController {
 	                         Model model) {
 
 		 Page<StudyTab> study = studyTabService.searchStudyTab(PageRequest.of(nowPage, 10),pid, pname, reportStatus, modality);
-	        model.addAttribute("study", study);
+	        int totalPages=study.getTotalPages()-1;
+			model.addAttribute("totalPages",totalPages);
+			model.addAttribute("study",study);
+			model.addAttribute("nowPage",nowPage);
 	        return "admin/Study/StudyList";
 	 }
 	 
