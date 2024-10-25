@@ -32,9 +32,10 @@
 <body>
 	<table>
 		<tr>
-			<th>검사이름</th>
-			<th>환자아이디</th>
+			<th>검사설명</th>
 			<th>장비</th>
+			<td>검사날짜</td>
+			<th>환자아이디</th>
 			<th>환지이름</th>
 			<th>환자성별</th>
 			<th>환자생일</th>
@@ -48,8 +49,9 @@
 			onclick="studyPast(this)">
 
 			<td th:text="${study.studyDesc}!= null ? ${study.studyDesc}: '이름없음'"></td>
-			<td th:text="${study.pid}"></td>
 			<td th:text="${study.modality}"></td>
+			<td th:text="${study.studyDate}"></td>
+			<td th:text="${study.pid}"></td>
 			<td th:text="${study.pname}"></td>
 			<td th:text="${study.psex}"></td>
 			<td th:text="${study.pBirthDateTime}"></td>
