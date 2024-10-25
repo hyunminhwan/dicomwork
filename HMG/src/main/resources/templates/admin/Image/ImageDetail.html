@@ -9,13 +9,14 @@
 	<script src="https://unpkg.com/dicom-parser"></script>
 	<script src="https://unpkg.com/cornerstone-wado-image-loader"></script>
 	<script src="https://unpkg.com/cornerstone-tools/dist/cornerstoneTools.js"></script>
+
 </head>
 <!--스크립트 링크-->
-<script  src="js/ImageDetail.js"></script>
+<script src="js/ImageDetail.js"></script>
+<script src="js/tools.js"></script>
 
-<button type="button"  onclick="location.href='StudyTabList'">전체조회</button>
-<button type="button" id="invertButton" >흑백전환</button>
-<button class="pan" onclick="togglePanTool()">이동</button>
+<div th:replace="~{fragments/tools.html :: tools-container}"></div>
+
 <body>
 	<!-- DICOM 이미지를 표시할 단일 뷰어 컨테이너 -->
 	<div class="viewer-container" id="dicomViewer" style="width:1200px; height:800px; border:1px solid black;"

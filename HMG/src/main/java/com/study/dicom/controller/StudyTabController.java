@@ -38,9 +38,11 @@ public class StudyTabController {
 	                         @RequestParam(value = "pname") String pname,
 	                         @RequestParam(value = "reportStatus") Long reportStatus,
 	                         @RequestParam(value = "modality") String modality,
+	                         @RequestParam(value = "startDate") String startDate,
+	                         @RequestParam(value = "endDate") String endDate,
 	                         Model model) {
 
-		 Page<StudyTab> study = studyTabService.searchStudyTab(PageRequest.of(nowPage, 10),pid, pname, reportStatus, modality);
+		 Page<StudyTab> study = studyTabService.searchStudyTab(PageRequest.of(nowPage, 10),pid, pname, reportStatus, modality,startDate,endDate);
 	        int totalPages=study.getTotalPages()-1;
 			model.addAttribute("totalPages",totalPages);
 			model.addAttribute("study",study);

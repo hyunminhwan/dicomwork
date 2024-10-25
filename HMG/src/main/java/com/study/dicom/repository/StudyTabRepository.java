@@ -20,12 +20,15 @@ public interface StudyTabRepository extends JpaRepository<StudyTab,Long>{
 	            + "(:pid IS NULL OR s.pid LIKE %:pid%) " 
 	            + "AND (:pname IS NULL OR s.pname LIKE %:pname%) "
 	            + "AND (:reportStatus = 0 OR s.reportStatus = :reportStatus) "
-	            + "AND (:modality IS NULL OR s.modality = :modality)")
+	            + "AND (:modality IS NULL OR s.modality = :modality) "
+	            + "AND (:startDate IS NULL OR :endDate IS NULL OR s.studyDate BETWEEN :startDate AND :endDate)")
 	 Page<StudyTab> findStudyTabsByCriteria(PageRequest of,
 	    									   @Param("pid") String pid,
 	                                           @Param("pname") String pname,
 	                                           @Param("reportStatus") Long reportStatus,
-	                                           @Param("modality") String modality);
+	                                           @Param("modality") String modality,
+	                                           @Param("startDate") String startDate,
+	                                           @Param("endDate") String endDate);
 
 	Page<StudyTab> findAllByPidAndPname(PageRequest of, String pid, String pname);
 

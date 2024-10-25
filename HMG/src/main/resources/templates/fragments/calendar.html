@@ -80,8 +80,8 @@
 	<div class="container">
 		<div class="calendar-panel">
 			<div id="calendar-title" style="font-size: 24px; margin-bottom: 20px; text-align: center;"></div>
-			<button id="prev-month">이전 달</button>
-			<button id="next-month">다음 달</button>
+			<button type="button" id="prev-month">이전 달</button>
+			<button type="button" id="next-month">다음 달</button>
 			<table>
 				<thead>
 					<tr>
@@ -103,9 +103,9 @@
 		<!-- 검사일자 선택 -->
 		<div>
 			<label>검사일자:</label>
-			<input type="date" id="start-date" class="date-input" readonly>
+			<input type="date" id="start-date" name="startDate"  class="date-input" readonly>
 			~
-			<input type="date" id="end-date" class="date-input" readonly>
+			<input type="date" id="end-date" name="endDate" class="date-input" readonly>
 		</div>
 
 		<div class="buttons">

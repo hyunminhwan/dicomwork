@@ -59,9 +59,10 @@
 </head>
 
 <div th:fragment="fragment-menu">
-	<div th:replace="~{/fragments/calendar.html :: fragment-calendar}"></div>
+
 	<body>
 		<form action="/search" method="get">
+				<div th:replace="~{/fragments/calendar.html :: fragment-calendar}"></div>
 			<div class="container">
 				<div class="search-bar">
 					<input type="text" placeholder="환자 아이디" name="pid">
@@ -115,25 +116,6 @@
 					<button type="button" class="active" onclick="location.href='StudyTabList'">전체조회</button>
 
 		</form>
-		<form action="/searchByDate">		
-				<button type="button" class="active" onclick="location.href='/calendar'">달력</button>
-					<script>
-					    // 달력 표시/숨기기 함수
-					    function toggleCalendar() {
-					        const calendarContainer = document.getElementById('calendar-container');
-					        if (calendarContainer.style.display === 'none') {
-					            calendarContainer.style.display = 'block'; // 달력 표시
-					            renderCalendar(currentMonth, currentYear);  // 달력 렌더링
-					        } else {
-					            calendarContainer.style.display = 'none';  // 달력 숨기기
-					        }
-					    }
-					</script>
-					
-					<input type="date" name="startDate" placeholder="시작 날짜">
-            	    <input type="date" name="endDate" placeholder="종료 날짜">
-        	        <button type="submit">검색</button>>
-			</form>
 		
 </div>
 		

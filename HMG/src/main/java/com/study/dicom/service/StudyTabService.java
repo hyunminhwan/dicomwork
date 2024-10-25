@@ -20,8 +20,8 @@ public class StudyTabService {
 		return studyTabRepository.findAllByOrderByStudyKeyDesc(of);
 	}	
 	
-	public Page<StudyTab> searchStudyTab(PageRequest of,String pid, String pname, Long reportStatus, String modality) {
-        return studyTabRepository.findStudyTabsByCriteria(of,pid, pname, reportStatus, modality);
+	public Page<StudyTab> searchStudyTab(PageRequest of,String pid, String pname, Long reportStatus, String modality,String startDate,String endDate) {
+        return studyTabRepository.findStudyTabsByCriteria(of,pid, pname, reportStatus, modality,startDate,endDate);
     }
 
 	public Page<StudyTab> pastList(PageRequest of, String pid, String pname) {
